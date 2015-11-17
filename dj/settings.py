@@ -37,6 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
+    'blog',
+    'books'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,6 +107,7 @@ else:
         'default':{
             'ENGINE':'django.db.backends.mysql',
             'HOST':'localhost',
+            'USER':'root',
             'POST':3306,
             'PASSWORD':123456,
             'NAME':'dj'
@@ -111,6 +115,7 @@ else:
         'dj1':{
             'ENGINE':'django.db.backends.mysql',
             'HOST':'localhost',
+            'USER':'root',
             'PORT':3306,
             'PASSWORD':123456,
             'NAME':'dj1'
@@ -118,6 +123,7 @@ else:
         'dj2':{
             'ENGINE':'django.db.backends.mysql',
             'HOST':'localhost',
+            'USER':'root',
             'PORT':3306,
             'PASSWORD':123456,
             'NAME':'dj2'
