@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
 
+from polls import urls as polls_urls
+from home import urls as home_urls
 urlpatterns = [
+    url(r'^$',TemplateView.as_view(template_name='home/index.html')),
+    # use module
+    url(r'^home/',include(home_urls, namespace='home')),
+    # use six.string type. will be convert to module using load_module("home.urls")
+    url(r'^blog/',include("blog.urls", namespace='blog')),
+    url(r'^books/',include("books.urls",namespace='books')),
+    url(r'^polls/',include(polls_urls,namespace='polls')),
     url(r'^admin/', include(admin.site.urls)),
+
 ]

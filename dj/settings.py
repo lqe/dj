@@ -37,7 +37,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
+    'blog',
+    'books',
+    'polls'
 )
+
+# home --> dj
+# blog--> dj1
+# books--> dj1
+# polls --> dj2
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,8 +64,7 @@ ROOT_URLCONF = 'dj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,38 +80,76 @@ TEMPLATES = [
 WSGI_APPLICATION = 'dj.wsgi.application'
 
 
+DATABASE_ROUTERS = []
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 if socket.gethostname() == 'lqe.local':
     DATABASES = {
-        'default':{
-            'ENGINE':'django.db.backends.mysql',
-            'HOST':'localhost',
-            'POST':3306,
-            'PASSWORD':123456,
-            'NAME':'dj'
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'localhost',
+            'POST': 3306,
+            'USER': 'lqe',
+            'PASSWORD': 123456,
+            'NAME': 'dj',
+            'CHARSET': 'utf8'
         },
-        'dj1':{
-            'ENGINE':'django.db.backends.mysql',
-            'HOST':'localhost',
-            'PORT':3306,
-            'PASSWORD':123456,
-            'NAME':'dj1'
+        'dj1': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'localhost',
+            'PORT': 3306,
+            'USER': 'lqe',
+            'PASSWORD': 123456,
+            'NAME': 'dj1',
+            'CHARSET': 'utf8'
         },
-        'dj2':{
-            'ENGINE':'django.db.backends.mysql',
-            'HOST':'localhost',
-            'PORT':3306,
-            'PASSWORD':123456,
-            'NAME':'dj2'
+        'dj2': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'localhost',
+            'PORT': 3306,
+            'USER': 'lqe',
+            'PASSWORD': 123456,
+            'NAME': 'dj2',
+            'CHARSET': 'utf8'
         }
 
     }
-else:
+elif socket.gethostname() == '':
     DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'localhost',
+            'POST': 3306,
+            'USER': 'lqe',
+            'PASSWORD': 123456,
+            'NAME': 'dj',
+            'CHARSET': 'utf8'
+        },
+        'dj1': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'localhost',
+            'PORT': 3306,
+            'USER': 'lqe',
+            'PASSWORD': 123456,
+            'NAME': 'dj1',
+            'CHARSET': 'utf8'
+        },
+        'dj2': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'localhost',
+            'PORT': 3306,
+            'USER': 'lqe',
+            'PASSWORD': 123456,
+            'NAME': 'dj2',
+            'CHARSET': 'utf8'
+        }
+    }
+else:
+    DATABASES={
         'default':{
             'ENGINE':'django.db.backends.mysql',
             'HOST':'localhost',
+            'USER':'root',
             'POST':3306,
             'PASSWORD':123456,
             'NAME':'dj'
@@ -111,6 +157,7 @@ else:
         'dj1':{
             'ENGINE':'django.db.backends.mysql',
             'HOST':'localhost',
+            'USER':'root',
             'PORT':3306,
             'PASSWORD':123456,
             'NAME':'dj1'
@@ -118,6 +165,7 @@ else:
         'dj2':{
             'ENGINE':'django.db.backends.mysql',
             'HOST':'localhost',
+            'USER':'root',
             'PORT':3306,
             'PASSWORD':123456,
             'NAME':'dj2'
@@ -132,6 +180,7 @@ else:
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+# TIME_ZONE = 'CN'
 
 USE_I18N = True
 
