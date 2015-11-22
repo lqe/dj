@@ -3,7 +3,23 @@ import datetime
 from django.utils import timezone
 from django.db import models
 
+class PollsAppRouter(object):
+    ''''''
+    def db_for_read(self, model, **hints):
+        if model._meta.app_label == 'polls' :
+            return 'dj2'
+        return None
+    db_for_write = db_for_read
 
+    def allow_relation(self, obj1, obj2, **hints):
+        if obj1._meta.app_label == 'polls' and \
+           obj2._meta.app_label == 'polls':
+            return True
+        return None
+    def allow_migrate(self, db, app_label, model=None, **hints):
+        if app_label == 'polls':
+            return db == 'dj2'
+        return None
 
 # Create your models here.
 

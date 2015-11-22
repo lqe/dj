@@ -43,10 +43,7 @@ INSTALLED_APPS = (
     'polls'
 )
 
-# home --> dj
-# blog--> dj1
-# books--> dj1
-# polls --> dj2
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,8 +76,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dj.wsgi.application'
 
-
-DATABASE_ROUTERS = []
+# home --> dj
+# blog--> dj1
+# books--> dj1
+# polls --> dj2
+DATABASE_ROUTERS = ['books.models.BooksAppRouter', 'polls.models.PollsAppRouter']
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 if socket.gethostname() == 'lqe.local':
@@ -193,3 +193,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = '/upload_to/'
